@@ -1,0 +1,23 @@
+.nuq-select {
+    font-style: italic;
+    font-weight: normal;
+    cursor: pointer;
+}
+.nuq-collapse {
+    float: right;
+    padding-right: 20px;
+    font-size: 30px;
+    font-weight: normal;
+    cursor: pointer;
+    color: gray;
+}
+.nulapsed tr:last-of-type div {
+	height: 0px;
+	overflow: hidden;
+}
+.nuq-collapse::after {
+    content: "-";
+}
+.nulapsed .nuq-collapse::after {
+    content: "+" !important;
+}
