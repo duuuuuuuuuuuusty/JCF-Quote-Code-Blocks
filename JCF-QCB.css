@@ -1,23 +1,22 @@
-.nuq-select {
-    font-style: italic;
-    font-weight: normal;
-    cursor: pointer;
+.qcLi-select {
+  margin-left: 4px;
+  cursor: pointer;
+  font-style: italic;
 }
-.nuq-collapse {
-    float: right;
-    padding-right: 20px;
-    font-size: 30px;
-    font-weight: normal;
-    cursor: pointer;
-    color: gray;
+.qcLi-collapse-btn {
+  float: right;
+  margin-right: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 0 2px;
 }
-.nulapsed tr:last-of-type div {
-	height: 0px;
-	overflow: hidden;
+.qcLi-collapse-btn::after {
+  content: "-";
 }
-.nuq-collapse::after {
-    content: "-";
+.qcLi-collapsed .qcLi-collapse-btn::after {
+  content: "+";
 }
-.nulapsed .nuq-collapse::after {
-    content: "+" !important;
+.qcLi-collapsed .collapsible {
+  height: 0px;
+  overflow: hidden;
 }
