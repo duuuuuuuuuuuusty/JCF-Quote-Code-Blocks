@@ -1,27 +1,25 @@
-    // Mobile friendly quote and code copy/collapse functionality. Dusty@forum.jcink.com
+    // Quote and code copy/collapse functionality. Support: https://forum.jcink.com/index.php?showtopic=27980
     document.addEventListener('DOMContentLoaded', function() {
-        var c1 = document.querySelectorAll("[id='CODE-WRAP']"),
-            q1 = document.querySelectorAll("[id='QUOTE-WRAP']");
-        for (var i = 0; i < c1.length; i++) {
-            var c2 = c1[i].querySelector('#CODE');
-            c1[i].className += 'CODE-WRAP'
-            c1[i].removeAttribute('id')
-            c2.className += 'CODE'
-            c2.removeAttribute('id')
-            var o = c1[i].querySelector(".CODE").innerHTML,
-                n = '<div>' + o + '</div>';
-            c1[i].querySelector(".CODE").innerHTML = n;
-            c1[i].getElementsByTagName("td")[0].innerHTML += '<span class="nuq-select" onClick="window.getSelection().selectAllChildren(this.parentNode.parentNode.nextSibling.querySelector(\'.CODE div\')),document.execCommand(\'copy\');"> (Copy to clipboard)</span><span class="nuq-collapse" onClick="	this.parentNode.parentNode.parentNode.parentNode.classList.toggle(\'nulapsed\')"></span>'
-        }
-        for (var i = 0; i < q1.length; i++) {
-            var q2 = q1[i].querySelector('#QUOTE');
-            q1[i].className += 'QUOTE-WRAP'
-            q1[i].removeAttribute('id')
-            q2.className += 'QUOTE'
-            q2.removeAttribute('id')
-            var o = q1[i].querySelector(".QUOTE").innerHTML,
-                n = '<div>' + o + '</div>';
-            q1[i].querySelector(".QUOTE").innerHTML = n;
-            q1[i].getElementsByTagName("td")[0].innerHTML += '<span class="nuq-select" onclick="window.getSelection().selectAllChildren(this.parentNode.parentNode.nextSibling.querySelector(\'.QUOTE div\')),document.execCommand(\'copy\');"> (Copy to clipboard)</span><span class="nuq-collapse" onclick="this.parentNode.parentNode.parentNode.parentNode.classList.toggle(\'nulapsed\')"></span>'
-        }
+		let qcLi = document.querySelectorAll("[id='CODE-WRAP'], [id='QUOTE-WRAP']")
+		for (var i=0;i<qcLi.length;i++) {
+		  let w = qcLi[i];
+		  let c = w.querySelector('td[id]');
+		  w.classList.add(w.getAttribute('id'))
+		  w.querySelector('td[id]').classList.add(c.getAttribute('id'))
+		  c.innerHTML = '<div class="collapsible">'+c.innerHTML+'</div>'
+		  w.querySelector('td:first-of-type').innerHTML += '<span class="qcLi-select">(Copy to clipboard)</span><span class="qcLi-collapse-btn"></span>'
+		  w.removeAttribute('id')
+		  c.removeAttribute('id')
+		}
+		document.querySelectorAll('.qcLi-select').forEach(function(a) {
+			a.addEventListener("click", function() {
+				window.getSelection().selectAllChildren(this.closest('tr').nextSibling)
+				document.execCommand('copy');
+			});
+		});
+		document.querySelectorAll('.qcLi-collapse-btn').forEach(function(a) {
+			a.addEventListener("click", function() {
+				this.closest('table').classList.toggle('qcLi-collapsed')
+			});
+		});
     }, false);
