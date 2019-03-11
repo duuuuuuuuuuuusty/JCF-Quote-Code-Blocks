@@ -5,7 +5,7 @@
 		  let w = qcLi[i];
 		  let c = w.querySelector('td[id]');
 		  w.classList.add(w.getAttribute('id'))
-		  w.querySelector('td[id]').classList.add(c.getAttribute('id'))
+		  c.classList.add(c.getAttribute('id'))
 		  c.innerHTML = '<div class="collapsible">'+c.innerHTML+'</div>'
 		  w.querySelector('td:first-of-type').innerHTML += '<span class="qcLi-select">(Copy to clipboard)</span><span class="qcLi-collapse-btn"></span>'
 		  w.removeAttribute('id')
