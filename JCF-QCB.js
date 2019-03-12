@@ -13,13 +13,13 @@
 		}
 		document.querySelectorAll('.qcLi-select').forEach(function(a) {
 			a.addEventListener("click", function() {
-				window.getSelection().selectAllChildren(this.closest('tr').nextSibling)
+				window.getSelection().selectAllChildren(this.parentNode.parentNode.nextSibling)
 				document.execCommand('copy');
 			});
 		});
 		document.querySelectorAll('.qcLi-collapse-btn').forEach(function(a) {
 			a.addEventListener("click", function() {
-				this.closest('table').classList.toggle('qcLi-collapsed')
+				this.parentNode.parentNode.parentNode.classList.toggle('qcLi-collapsed')
 			});
 		});
     }, false);
